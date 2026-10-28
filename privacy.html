@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fovex - Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #0F0F12;
+      --border: #222228;
+      --text: #F3F4F6;
+      --muted: #9CA3AF;
+      --accent: #E5A93B;
+      --accent-glow: rgba(229, 169, 59, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #000;
+      font-size: 22px;
+    }
+    .logo h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2:first-of-type { margin-top: 0; }
+    p {
+      color: #D1D5DB;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+      color: #D1D5DB;
+      font-size: 15px;
+    }
+    li { margin-bottom: 8px; }
+    .badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .contact-box {
+      background: #141418;
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-badge">F</div>
+        <h1>Fovex</h1>
+      </div>
+      <p class="subtitle">Last updated: October 28, 2026</p>
+    </div>
+
+    <div class="card">
+      <span class="badge">Privacy First Architecture</span>
+      
+      <h2>1. Overview & Core Philosophy</h2>
+      <p>Fovex ("we", "our", or "the app") is engineered with an uncompromising privacy-first design. We believe your reading habits, library, and books are deeply personal. Therefore, Fovex operates on a local-first principle: <strong>your documents never leave your device.</strong></p>
+
+      <h2>2. Document Security & Zero-Server Book Storage</h2>
+      <p>When you import PDF or EPUB documents into Fovex:</p>
+      <ul>
+        <li><strong>On-Device Encryption:</strong> All imported books are encrypted using industry-standard AES-256-GCM authenticated encryption and stored exclusively in your device's sandboxed local storage.</li>
+        <li><strong>Zero Cloud Uploads of Books:</strong> We do not operate any server that receives, parses, stores, or transmits your reading files. Deleting files from third-party storage or iOS Files will not affect your encrypted local library inside Fovex.</li>
+        <li><strong>Local RSVP Processing:</strong> Rapid Serial Visual Presentation (RSVP) tokenization, word pacing, and reading metrics are calculated entirely on your device hardware (Apple Neural Engine / CPU).</li>
+      </ul>
+
+      <h2>3. Account & Authentication</h2>
+      <p>Fovex supports authentication via Apple Sign-In and Google Sign-In, orchestrated securely through Google Firebase Authentication:</p>
+      <ul>
+        <li><strong>Sign in with Apple:</strong> We support Apple's "Hide My Email" feature, allowing you to use Fovex completely anonymously.</li>
+        <li><strong>Information Stored:</strong> We only store standard account identity tokens (User ID, email address, and name if provided) to authenticate your access and synchronize your subscription status.</li>
+      </ul>
+
+      <h2>4. Purchases & Subscriptions</h2>
+      <p>Subscriptions and in-app purchases are securely processed through Apple's In-App Purchase system and validated using RevenueCat. We never see, collect, or store your credit card or financial information. RevenueCat receives anonymized transaction identifiers to ensure seamless unlock of Pro features across your devices.</p>
+
+      <h2>5. Diagnostics & Analytics</h2>
+      <p>We do not sell your personal data. We do not use third-party behavioral advertising SDKs. Aggregated, anonymized crash reports or performance metrics may be collected exclusively through Apple's opt-in App Store analytics to improve app stability.</p>
+
+      <h2>6. Your Rights & Data Deletion</h2>
+      <p>You have full control over your data at all times. You can delete individual books or wipe your local library directly from the app. You can also delete your account and associated authentication records at any time by contacting our support team.</p>
+
+      <div class="contact-box">
+        <strong>Questions or Data Requests?</strong><br>
+        If you have any questions regarding this Privacy Policy, please contact us at: <a href="mailto:muhammet59aydin@icloud.com" style="color: var(--accent); text-decoration: none;">muhammet59aydin@icloud.com</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Fovex. All rights reserved. Built with privacy by design.
+    </footer>
+  </div>
+</body>
+</html>

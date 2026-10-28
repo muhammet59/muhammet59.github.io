@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fovex - Support & Help Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --card: #0F0F12;
+      --border: #222228;
+      --text: #F3F4F6;
+      --muted: #9CA3AF;
+      --accent: #E5A93B;
+      --accent-glow: rgba(229, 169, 59, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #000;
+      font-size: 22px;
+    }
+    .logo h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      color: #FFF;
+    }
+    h2:first-of-type { margin-top: 0; }
+    p {
+      color: #D1D5DB;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-weight: 600;
+      color: #FFF;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .contact-card {
+      background: linear-gradient(180deg, #181820 0%, #101015 100%);
+      border: 1px solid #2D2D38;
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: 16px;
+      transition: opacity 0.2s;
+    }
+    .contact-btn:hover { opacity: 0.9; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-badge">F</div>
+        <h1>Fovex Support</h1>
+      </div>
+      <p class="subtitle">Frequently Asked Questions & Customer Care</p>
+    </div>
+
+    <div class="card">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">What file formats does Fovex support?</div>
+        <div class="faq-a">Fovex natively supports both PDF and EPUB files. Both formats are processed on-device and stored in an AES-256 encrypted vault.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What happens if I delete a book from my iOS Files app?</div>
+        <div class="faq-a">Your book is safe! When you import a document into Fovex, the app creates a secure, encrypted local copy. Deleting the original file from iCloud or iOS Files will not remove it from Fovex.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What is RSVP speed reading?</div>
+        <div class="faq-a">RSVP stands for Rapid Serial Visual Presentation. Words are displayed one by one at a fixed fixation point with an Optimal Recognition Point (ORP) highlight, eliminating saccadic eye movement and enabling speeds up to 1000+ words per minute without eye fatigue.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">How do I restore my purchase?</div>
+        <div class="faq-a">Open Settings inside Fovex and tap "Restore Purchases". As long as you are logged into your Apple ID, your Pro features will activate immediately.</div>
+      </div>
+
+      <div class="contact-card">
+        <h3 style="color: #FFF; font-size: 18px; margin-bottom: 8px;">Still have questions?</h3>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 0;">We typically respond to support inquiries within 24 hours.</p>
+        <a href="mailto:muhammet59aydin@icloud.com?subject=Fovex%20Support%20Request" class="contact-btn">Contact Developer</a>
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Fovex. All rights reserved.
+    </footer>
+  </div>
+</body>
+</html>
