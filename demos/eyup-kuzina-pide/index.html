@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuzina Pide & Kebap — İslambey, Eyüpsultan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf8f3;
+    --ink: #231710;
+    --muted: #6b574b;
+    --primary: #381c11;
+    --accent: #b84a24;
+    --accent-soft: #fbe8e0;
+    --line: #ede2d5;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Plus Jakarta Sans", -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; overflow-x: hidden; }
+  h1, h2, .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+  .topbar { background: #24110a; color: #e2e8f0; font-size: 12.5px; padding: 9px 6%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .topbar a { color: #fde68a; text-decoration: none; font-weight: 600; }
+
+  header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  .nav-inner { max-width: 1220px; margin: 0 auto; padding: 15px 6%; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+  .brand { font-family: "Cormorant Garamond", serif; font-size: 23px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.2px; }
+  .brand span { color: var(--accent); }
+  .nav-menu { display: flex; list-style: none; gap: 26px; align-items: center; }
+  .nav-menu > li { position: relative; }
+  .nav-menu a { text-decoration: none; color: var(--ink); font-size: 14px; font-weight: 500; padding: 6px 0; display: inline-block; transition: color 0.2s; }
+  .nav-menu a:hover { color: var(--accent); }
+  .dropdown { position: absolute; top: calc(100% + 10px); left: 0; min-width: 240px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px; box-shadow: 0 22px 46px rgba(0,0,0,0.16); opacity: 0; visibility: hidden; transform: translateY(6px); transition: all 0.2s; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: block; padding: 9px 12px; border-radius: 8px; font-size: 13.5px; }
+  .dropdown a:hover { background: var(--accent-soft); color: var(--accent); }
+
+  .btn { background: var(--accent); color: #fff; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-size: 13.5px; font-weight: 700; border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
+  .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .btn-glass { background: rgba(255,255,255,0.14); color: #fff; border: 1px solid rgba(255,255,255,0.34); backdrop-filter: blur(8px); }
+  .btn-glass:hover { background: rgba(255,255,255,0.24); }
+
+  .hamburger { display: none; background: transparent; border: 1px solid var(--line); border-radius: 10px; width: 42px; height: 42px; font-size: 18px; color: var(--ink); cursor: pointer; }
+  .mobile-drawer { display: none; background: #ffffff; border-top: 1px solid var(--line); padding: 16px 6% 24px; }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer a { display: block; padding: 11px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); font-weight: 500; }
+
+  .hero { position: relative; min-height: 640px; display: flex; align-items: center; background: linear-gradient(100deg, rgba(28,13,7,0.90) 0%, rgba(56,28,17,0.72) 52%, rgba(56,28,17,0.34) 100%), url("../eyup-assets/restaurant.jpg") center/cover no-repeat; color: #fff; padding: 84px 6%; }
+  .hero-inner { max-width: 1220px; width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: #fde68a; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: #fde68a; }
+  .hero h1 { font-size: clamp(38px, 5vw, 60px); line-height: 1.08; margin-bottom: 20px; font-weight: 600; }
+  .hero h1 em { color: #fde68a; font-style: italic; }
+  .hero-lead { font-size: 16.5px; color: rgba(248,250,252,0.9); max-width: 550px; margin-bottom: 30px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .panel { background: rgba(255,255,255,0.95); color: #231710; border: 1px solid var(--line); border-radius: 22px; padding: 30px; box-shadow: 0 28px 64px rgba(0,0,0,0.28); backdrop-filter: blur(12px); }
+  .panel h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .panel .sub { font-size: 13.5px; color: #6b574b; margin-bottom: 18px; }
+  .row { padding: 12px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; }
+  .row strong { color: var(--accent); text-align: right; }
+
+  .section { max-width: 1220px; margin: 0 auto; padding: 84px 6%; }
+  .tag { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .section h2 { font-size: clamp(30px, 4vw, 44px); margin-bottom: 12px; line-height: 1.12; }
+  .section-sub { color: var(--muted); max-width: 560px; margin-bottom: 38px; font-size: 15.5px; }
+
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.25s, box-shadow 0.25s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(0,0,0,0.09); }
+  .card-num { font-family: "Cormorant Garamond", serif; font-size: 26px; color: var(--accent); font-weight: 700; margin-bottom: 10px; }
+  .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .card p { font-size: 14.5px; color: var(--muted); margin-bottom: 18px; }
+  .card-meta { font-size: 12.5px; font-weight: 700; color: var(--accent); padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+
+  .split { background: #ffffff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .split-inner { max-width: 1220px; margin: 0 auto; padding: 84px 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .photo-box { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 26px 56px rgba(0,0,0,0.18); }
+  .photo-box img { width: 100%; height: 430px; object-fit: cover; display: block; }
+  .bullets { list-style: none; display: grid; gap: 14px; margin: 24px 0 30px; }
+  .bullets li { display: flex; gap: 12px; align-items: flex-start; font-size: 14.5px; }
+  .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+
+  .faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: 14px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; }
+  summary { font-weight: 600; font-size: 15px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::after { content: "+"; font-size: 20px; color: var(--accent); }
+  details[open] summary::after { content: "−"; }
+  details p { margin-top: 12px; font-size: 14.5px; color: var(--muted); }
+
+  .cta-wrap { max-width: 1220px; margin: 0 auto; padding: 40px 6% 84px; }
+  .cta { background: linear-gradient(100deg, rgba(28,13,7,0.90) 0%, rgba(56,28,17,0.72) 52%, rgba(56,28,17,0.34) 100%), url("../eyup-assets/restaurant.jpg") center/cover no-repeat; color: #fff; border-radius: 26px; padding: 60px 38px; text-align: center; }
+  .cta h2 { font-size: clamp(30px, 4vw, 44px); margin-bottom: 12px; }
+  .cta p { color: rgba(248,250,252,0.88); max-width: 560px; margin: 0 auto 28px; }
+
+  footer { background: #24110a; color: #cbd5e1; padding: 54px 6% 28px; }
+  .footer-grid { max-width: 1220px; margin: 0 auto 36px; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; }
+  .footer-grid h4 { color: #fff; font-size: 12.5px; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 12px; }
+  .footer-grid a { display: block; color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 8px; }
+  .footer-grid a:hover { color: #fde68a; }
+  .footer-bottom { max-width: 1220px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #94a3b8; }
+
+  @media (max-width: 920px) {
+    .nav-menu, .nav-cta { display: none; }
+    .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+    .hero-inner, .split-inner, .footer-grid { grid-template-columns: 1fr; }
+    .photo-box img { height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>İslambey Mah. Fahri Korutürk Cd. No:67, 34050 Eyüpsultan / İstanbul</div>
+  <div>Her Gün · 11:00 – 23:00 · <a href="tel:+902125810493">0212 581 04 93</a></div>
+</div>
+
+<header>
+  <div class="nav-inner">
+    <a href="#" class="brand">Kuzina <span>Pide & Kebap</span></a>
+    <ul class="nav-menu">
+      <li>
+        <a href="#hizmetler">Menümüz ▾</a>
+        <div class="dropdown"><a href="#hizmetler">Taş Fırın Pideler</a>
+<a href="#hizmetler">Lahmacun & Fırın Lezzetleri</a>
+<a href="#hizmetler">Kömür Ateşinde Kebaplar</a>
+<a href="#hizmetler">Çorba, Tatlı & İçecekler</a>
+</div>
+      </li>
+      <li><a href="#hakkimizda">Neden Biz?</a></li>
+      <li><a href="#sss">Sık Sorulanlar</a></li>
+      <li><a href="#iletisim">İletişim &amp; Konum</a></li>
+    </ul>
+    <a href="https://wa.me/905442744710?text=Merhaba%2C%20Kuzina%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn nav-cta">WhatsApp Paket Sipariş</a>
+    <button class="hamburger" aria-label="Menü" onclick="document.getElementById('mNav').classList.toggle('open')">☰</button>
+  </div>
+  <div class="mobile-drawer" id="mNav">
+    <a href="#hizmetler" onclick="document.getElementById('mNav').classList.toggle('open')">Menümüz</a>
+    <a href="#hakkimizda" onclick="document.getElementById('mNav').classList.toggle('open')">Neden Biz?</a>
+    <a href="#sss" onclick="document.getElementById('mNav').classList.toggle('open')">Sık Sorulanlar</a>
+    <a href="#iletisim" onclick="document.getElementById('mNav').classList.toggle('open')">İletişim &amp; Konum</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">İslambey · Eyüpsultan Taş Fırın & Ocakbaşı</div>
+      <h1>Taş fırından çıtır pide, <em>odun ateşinde</em> gerçek kebap.</h1>
+      <p class="hero-lead">Günlük taze açılan hamur, seçilmiş yerli etler ve sıcak servisle Eyüpsultan İslambey'de ailenizle keyifle oturabileceğiniz lezzet durağı.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/905442744710?text=Merhaba%2C%20Kuzina%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn">WhatsApp Paket Sipariş</a>
+        <a href="tel:+902125810493" class="btn btn-glass">Hemen Ara: 0212 581 04 93</a>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Hızlı İletişim &amp; Konum</h3>
+      <p class="sub">İslambey, Eyüpsultan bölgesinde doğrudan hizmet.</p>
+      <div class="row"><span>Bölge</span><strong>İslambey, Eyüpsultan</strong></div>
+      <div class="row"><span>Çalışma Saatleri</span><strong>Her Gün · 11:00 – 23:00</strong></div>
+      <div class="row"><span>Telefon</span><strong>0212 581 04 93</strong></div>
+      <div class="row"><span>Yol Tarifi</span><strong><a href="https://www.google.com/maps/search/?api=1&query=Kuzina%20%C4%B0slambey%20Mah.%20Fahri%20Korut%C3%BCrk%20Cd.%20No%3A67%2C%2034050%20Ey%C3%BCpsultan%20/%20%C4%B0stanbul" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Haritada Aç ↗</a></strong></div>
+      <a href="https://wa.me/905442744710?text=Merhaba%2C%20Kuzina%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn" style="width:100%;margin-top:18px;">WhatsApp Paket Sipariş</a>
+    </div>
+  </div>
+</section>
+
+<section id="hizmetler" class="section">
+  <div class="tag">Menümüz</div>
+  <h2>Öne Çıkan Hizmetlerimiz</h2>
+  <p class="section-sub">İslambey, Eyüpsultan sakinleri için güvenilir, hızlı ve kaliteli çözümler.</p>
+  <div class="grid-4">
+        <div class="card">
+          <div>
+            <div class="card-num">01</div>
+            <h3>Taş Fırın Pideler</h3>
+            <p>Kuşbaşılı kaşarlı, kıymalı, kavurmalı ve karışık özel hamurlu çıtır taş fırın pideler.</p>
+          </div>
+          <div class="card-meta"><span>Sıcak Servis</span><span>İslambey</span></div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="card-num">02</div>
+            <h3>Lahmacun & Fırın Lezzetleri</h3>
+            <p>İncecik açılmış bol malzemeli çıtır lahmacun, taze maydanoz ve limon eşliğinde.</p>
+          </div>
+          <div class="card-meta"><span>Odun Ateşi</span><span>İslambey</span></div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="card-num">03</div>
+            <h3>Kömür Ateşinde Kebaplar</h3>
+            <p>Adana, Urfa, beyti sarma, tavuk şiş ve ızgara çeşitleri özel mezelerle birlikte.</p>
+          </div>
+          <div class="card-meta"><span>Usta İşi</span><span>İslambey</span></div>
+        </div>
+        <div class="card">
+          <div>
+            <div class="card-num">04</div>
+            <h3>Çorba, Tatlı & İçecekler</h3>
+            <p>Günün sıcak çorbaları, fırın sütlaç, künefe ve yayık ayranı ile eksiksiz sofra.</p>
+          </div>
+          <div class="card-meta"><span>Her Gün Taze</span><span>İslambey</span></div>
+        </div></div>
+</section>
+
+<section id="hakkimizda" class="split">
+  <div class="split-inner">
+    <div class="photo-box">
+      <img src="../eyup-assets/restaurant.jpg" alt="Kuzina Pide & Kebap İslambey, Eyüpsultan">
+    </div>
+    <div>
+      <div class="tag">Yaklaşımımız</div>
+      <h2>Eyüpsultan'ın kalbinde aile sıcaklığında sofra.</h2>
+      <p style="color:var(--muted);font-size:15.5px;">İster İslambey'deki salonumuzda sevdiklerinizle oturun, ister WhatsApp sipariş hattımızdan komisyonsuz ve hızlı paket servis isteyin.</p>
+      <ul class="bullets"><li><span class="dot">✓</span><span><strong>Hızlı WhatsApp Paket Sipariş:</strong> 0544 274 47 10 hattımızdan doğrudan sıcak sipariş verebilirsiniz.</span></li>
+<li><span class="dot">✓</span><span><strong>Günlük Taze Malzeme:</strong> Etlerimiz ve sebzelerimiz her sabah günlük olarak hazırlanır.</span></li>
+<li><span class="dot">✓</span><span><strong>Aile & Grup Masaları:</strong> Eyüp Sultan ziyareti sonrası kalabalık aile ve misafir grupları için geniş oturma alanı.</span></li>
+</ul>
+      <a href="https://www.google.com/maps/search/?api=1&query=Kuzina%20%C4%B0slambey%20Mah.%20Fahri%20Korut%C3%BCrk%20Cd.%20No%3A67%2C%2034050%20Ey%C3%BCpsultan%20/%20%C4%B0stanbul" target="_blank" rel="noopener" class="btn">Google Haritalar'da Yol Tarifi Al</a>
+    </div>
+  </div>
+</section>
+
+<section id="sss" class="section">
+  <div style="text-align:center;margin-bottom:32px;">
+    <div class="tag">Merak Edilenler</div>
+    <h2>Sık Sorulan Sorular</h2>
+  </div>
+  <div class="faq-list"><details open><summary>Eyüpsultan çevresine paket servisiniz var mı?</summary><p>Evet, İslambey, Merkez, Nişanca ve yakın Eyüpsultan mahallelerine sıcak paket servisimiz bulunmaktadır.</p></details>
+<details><summary>Grup veya aile yemeği için rezervasyon yapabilir miyiz?</summary><p>Elbette, 0212 581 04 93 veya WhatsApp hattımızdan kişi sayısını ileterek masa ayırtabilirsiniz.</p></details>
+<details><summary>Haftanın her günü açık mısınız?</summary><p>Evet, haftanın 7 günü 11:00 – 23:00 saatleri arasında hizmet veriyoruz.</p></details>
+</div>
+</section>
+
+<div class="cta-wrap">
+  <section id="iletisim" class="cta">
+    <h2>Hemen İletişime Geçin</h2>
+    <p>İslambey Mah. Fahri Korutürk Cd. No:67, 34050 Eyüpsultan / İstanbul</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/905442744710?text=Merhaba%2C%20Kuzina%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" class="btn">WhatsApp Paket Sipariş</a>
+      <a href="tel:+902125810493" class="btn btn-glass">Ara: 0212 581 04 93</a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="brand" style="color:#fff;margin-bottom:10px;">Kuzina <span>Pide & Kebap</span></div>
+      <p style="font-size:14px;color:#94a3b8;max-width:320px;">İslambey Mah. Fahri Korutürk Cd. No:67, 34050 Eyüpsultan / İstanbul</p>
+    </div>
+    <div>
+      <h4>Hızlı Menü</h4>
+      <a href="#hizmetler">Menümüz</a>
+      <a href="#hakkimizda">Neden Biz?</a>
+      <a href="#sss">Sık Sorulanlar</a>
+    </div>
+    <div>
+      <h4>İletişim</h4>
+      <a href="tel:+902125810493">0212 581 04 93</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Kuzina%20%C4%B0slambey%20Mah.%20Fahri%20Korut%C3%BCrk%20Cd.%20No%3A67%2C%2034050%20Ey%C3%BCpsultan%20/%20%C4%B0stanbul" target="_blank" rel="noopener">Haritada Görüntüle</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Kuzina Pide & Kebap · Eyüpsultan, İstanbul</span>
+    <span>Özel Web Tasarım Ön İzlemesi</span>
+  </div>
+</footer>
+</body>
+</html>
